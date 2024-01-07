@@ -11,7 +11,7 @@
 		3716EC492B4881F7008CFC12 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716EC482B4881F7008CFC12 /* MainView.swift */; };
 		3716EC4D2B4881F8008CFC12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3716EC4C2B4881F8008CFC12 /* Assets.xcassets */; };
 		3716EC502B4881F8008CFC12 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3716EC4F2B4881F8008CFC12 /* Preview Assets.xcassets */; };
-		3716EC5A2B4881F8008CFC12 /* AOC2023Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716EC592B4881F8008CFC12 /* AOC2023Tests.swift */; };
+		3716EC5A2B4881F8008CFC12 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716EC592B4881F8008CFC12 /* MainViewModelTests.swift */; };
 		3716EC642B4881F8008CFC12 /* AOC2023UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716EC632B4881F8008CFC12 /* AOC2023UITests.swift */; };
 		3716EC662B4881F8008CFC12 /* AOC2023UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716EC652B4881F8008CFC12 /* AOC2023UITestsLaunchTests.swift */; };
 		3716EC732B4891F5008CFC12 /* TaskButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716EC722B4891F5008CFC12 /* TaskButtonView.swift */; };
@@ -52,6 +52,11 @@
 		37A4EDF82B49F0F7002DF506 /* TimeInterval+TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A4EDF72B49F0F7002DF506 /* TimeInterval+TimeFormatter.swift */; };
 		37A4EDFA2B49F65B002DF506 /* FCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A4EDF92B49F65B002DF506 /* FCColor.swift */; };
 		37A4EDFC2B4A08D8002DF506 /* View+Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A4EDFB2B4A08D8002DF506 /* View+Loadable.swift */; };
+		37A4EDFF2B4AB362002DF506 /* MockedAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A4EDFE2B4AB362002DF506 /* MockedAPIService.swift */; };
+		37A4EE012B4AB36B002DF506 /* MockedFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A4EE002B4AB36B002DF506 /* MockedFileService.swift */; };
+		37A4EE032B4AB373002DF506 /* MockedTaskLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A4EE022B4AB373002DF506 /* MockedTaskLoaderService.swift */; };
+		37A4EE052B4AB37D002DF506 /* MockedTaskSolverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A4EE042B4AB37D002DF506 /* MockedTaskSolverService.swift */; };
+		37A4EE072B4ABE19002DF506 /* TaskLoaderServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A4EE062B4ABE19002DF506 /* TaskLoaderServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +83,7 @@
 		3716EC4C2B4881F8008CFC12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3716EC4F2B4881F8008CFC12 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3716EC552B4881F8008CFC12 /* AOC2023Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOC2023Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3716EC592B4881F8008CFC12 /* AOC2023Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2023Tests.swift; sourceTree = "<group>"; };
+		3716EC592B4881F8008CFC12 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 		3716EC5F2B4881F8008CFC12 /* AOC2023UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOC2023UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3716EC632B4881F8008CFC12 /* AOC2023UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2023UITests.swift; sourceTree = "<group>"; };
 		3716EC652B4881F8008CFC12 /* AOC2023UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2023UITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -120,6 +125,11 @@
 		37A4EDF72B49F0F7002DF506 /* TimeInterval+TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+TimeFormatter.swift"; sourceTree = "<group>"; };
 		37A4EDF92B49F65B002DF506 /* FCColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCColor.swift; sourceTree = "<group>"; };
 		37A4EDFB2B4A08D8002DF506 /* View+Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Loadable.swift"; sourceTree = "<group>"; };
+		37A4EDFE2B4AB362002DF506 /* MockedAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedAPIService.swift; sourceTree = "<group>"; };
+		37A4EE002B4AB36B002DF506 /* MockedFileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedFileService.swift; sourceTree = "<group>"; };
+		37A4EE022B4AB373002DF506 /* MockedTaskLoaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedTaskLoaderService.swift; sourceTree = "<group>"; };
+		37A4EE042B4AB37D002DF506 /* MockedTaskSolverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedTaskSolverService.swift; sourceTree = "<group>"; };
+		37A4EE062B4ABE19002DF506 /* TaskLoaderServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLoaderServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +204,9 @@
 		3716EC582B4881F8008CFC12 /* AOC2023Tests */ = {
 			isa = PBXGroup;
 			children = (
-				3716EC592B4881F8008CFC12 /* AOC2023Tests.swift */,
+				37A4EDFD2B4AB2A1002DF506 /* Services */,
+				3716EC592B4881F8008CFC12 /* MainViewModelTests.swift */,
+				37A4EE062B4ABE19002DF506 /* TaskLoaderServiceTests.swift */,
 			);
 			path = AOC2023Tests;
 			sourceTree = "<group>";
@@ -327,6 +339,17 @@
 				37A4EDF92B49F65B002DF506 /* FCColor.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		37A4EDFD2B4AB2A1002DF506 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				37A4EDFE2B4AB362002DF506 /* MockedAPIService.swift */,
+				37A4EE002B4AB36B002DF506 /* MockedFileService.swift */,
+				37A4EE022B4AB373002DF506 /* MockedTaskLoaderService.swift */,
+				37A4EE042B4AB37D002DF506 /* MockedTaskSolverService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -506,7 +529,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3716EC5A2B4881F8008CFC12 /* AOC2023Tests.swift in Sources */,
+				3716EC5A2B4881F8008CFC12 /* MainViewModelTests.swift in Sources */,
+				37A4EE012B4AB36B002DF506 /* MockedFileService.swift in Sources */,
+				37A4EE032B4AB373002DF506 /* MockedTaskLoaderService.swift in Sources */,
+				37A4EE072B4ABE19002DF506 /* TaskLoaderServiceTests.swift in Sources */,
+				37A4EDFF2B4AB362002DF506 /* MockedAPIService.swift in Sources */,
+				37A4EE052B4AB37D002DF506 /* MockedTaskSolverService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

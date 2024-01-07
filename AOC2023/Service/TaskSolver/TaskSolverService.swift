@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class TaskSolverService {
+protocol TaskSolverServiceProtocol {
+    func solve(taskNumber: String, data: [String]) throws -> TasksResult
+}
+
+final class TaskSolverService: TaskSolverServiceProtocol {
     func solve(taskNumber: String, data: [String]) throws -> TasksResult {
         let task: TaskProvider = switch taskNumber {
         case "1": Task1(data: data)
@@ -38,7 +42,7 @@ final class TaskSolverService {
         )
     }
 
-    func measureTime(for closure: () -> Int) -> TasksResult.TaskResult {
+    private func measureTime(for closure: () -> Int) -> TasksResult.TaskResult {
         let start = CFAbsoluteTimeGetCurrent()
         let value = closure()
         let diff = CFAbsoluteTimeGetCurrent() - start

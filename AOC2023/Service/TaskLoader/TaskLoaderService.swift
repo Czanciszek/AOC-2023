@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class TaskLoaderService {
+protocol TaskLoaderServiceProtocol {
+    func getData(taskNumber: String, viaNetwork useNetworking: Bool) async throws -> [String]
+}
+
+final class TaskLoaderService: TaskLoaderServiceProtocol {
     let apiService: APIServiceProtocol
     let fileService: FileServiceProtocol
 

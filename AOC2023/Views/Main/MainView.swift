@@ -50,7 +50,9 @@ struct MainView: View {
             LazyVGrid(columns: gridColumns, spacing: 24) {
                 ForEach(Constants.Data.taskNumbers, id: \.self) { number in
                     TaskButtonView(taskNumber: number) {
-                        viewModel.selectedTask(taskNumber: number)
+                        Task {
+                            await viewModel.selectedTask(taskNumber: number)
+                        }
                     }
                 }
             }

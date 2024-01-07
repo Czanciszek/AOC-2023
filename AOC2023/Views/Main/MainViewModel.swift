@@ -11,30 +11,37 @@ import Foundation
 final class MainViewModel: ObservableObject {
     @Published var networkToggle: Bool = true
     @Published var error: Error?
-    @Published var inProgress: Bool = false
+    @Published private(set) var inProgress: Bool = false
     @Published private(set) var currentTaskResult: TasksResult?
 
-    let taskLoaderService = TaskLoaderService()
-    let taskSolverService = TaskSolverService()
+    private let taskLoaderService: TaskLoaderServiceProtocol
+    private let taskSolverService: TaskSolverServiceProtocol
 
-    func selectedTask(taskNumber: String) {
-        reset()
+    init(
+        taskLoaderService: TaskLoaderServiceProtocol = TaskLoaderService(),
+        taskSolverService: TaskSolverServiceProtocol = TaskSolverService()
+    ) {
+        self.taskLoaderService = taskLoaderService
+        self.taskSolverService = taskSolverService
+    }
 
-        inProgress = true
+    func selectedTask(taskNumber: String) async {
+        await MainActor.run {
+            reset()
+            inProgress = true
+        }
 
-        Task {
-            do {
-                let data = try await taskLoaderService.getData(
-                    taskNumber: taskNumber,
-                    viaNetwork: networkToggle
-                )
+        do {
+            let data = try await taskLoaderService.getData(
+                taskNumber: taskNumber,
+                viaNetwork: networkToggle
+            )
 
-                try await solveTask(taskNumber: taskNumber, using: data)
-            } catch {
-                await MainActor.run {
-                    self.error = error
-                    inProgress = false
-                }
+            try await solveTask(taskNumber: taskNumber, using: data)
+        } catch {
+            await MainActor.run {
+                self.error = error
+                inProgress = false
             }
         }
     }
