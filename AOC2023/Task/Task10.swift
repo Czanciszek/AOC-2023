@@ -16,8 +16,59 @@ final class Task10: TaskProvider {
     }
 
     func solveA() -> Int {
-        var row = data.firstIndex(where: { $0.contains(.start) })!
-        var column = data[row].firstIndex(where: { $0 == .start })!
+        findEnclosedLoop().count / 2
+    }
+
+    func solveB() -> Int {
+        let enclosedLoop = findEnclosedLoop()
+
+        var result = 0
+
+        for row in 0 ..< data.count {
+            var inPolygon = false
+            var crossingCandidate: Direction?
+
+            for column in 0 ..< data[0].count {
+                let point = LoopPoint(row: row, column: column)
+
+                if enclosedLoop.contains(point) {
+                    var pointDirection = data[row][column]
+                    if pointDirection == .start {
+                        pointDirection = obtainStartDirection()
+                    }
+
+                    if pointDirection == .NS {
+                        inPolygon.toggle()
+                    } else if pointDirection == .NE || pointDirection == .SE {
+                        crossingCandidate = pointDirection
+                    } else if pointDirection == .SW {
+                        if crossingCandidate == .NE {
+                            inPolygon.toggle()
+                        }
+                        crossingCandidate = nil
+                    } else if pointDirection == .NW || pointDirection == .start {
+                        if crossingCandidate == .SE {
+                            inPolygon.toggle()
+                        }
+                        crossingCandidate = nil
+                    }
+                } else if inPolygon {
+                    result += 1
+                }
+            }
+        }
+
+        return result
+    }
+}
+
+private extension Task10 {
+    func findEnclosedLoop() -> [LoopPoint] {
+        guard var row = data.firstIndex(where: { $0.contains(.start) }),
+              var column = data[row].firstIndex(where: { $0 == .start })
+        else {
+            return []
+        }
 
         var currentWay: Way = .N
         var enclosedLoop: [LoopPoint] = [
@@ -30,16 +81,9 @@ final class Task10: TaskProvider {
             enclosedLoop.append(LoopPoint(row: row, column: column))
         } while data[row][column] != .start
 
-        return enclosedLoop.count / 2
+        return enclosedLoop
     }
 
-    func solveB() -> Int {
-        // TODO: Create solution
-        return -1
-    }
-}
-
-private extension Task10 {
     struct LoopPoint: Equatable {
         let row: Int
         let column: Int
@@ -64,13 +108,88 @@ private extension Task10 {
 
     private func makeStep(from way: Way, to next: Direction) -> Way {
         switch (way, next) {
-        case (_, .start): .N
+        case (_, .start): makeStep(from: way, to: obtainStartDirection())
         case (.N, .NS), (.E, .NW), (.W, .NE): .N
         case (.S, .NS), (.E, .SW), (.W, .SE): .S
         case (.N, .SE), (.S, .NE), (.E, .EW): .E
         case (.N, .SW), (.S, .NW), (.W, .EW): .W
         default: .N
         }
+    }
+
+    private func obtainStartDirection() -> Direction {
+        guard let row = data.firstIndex(where: { $0.contains(.start) }),
+              let column = data[row].firstIndex(where: { $0 == .start })
+        else {
+            return .NW
+        }
+
+        var ways: [Way] = []
+
+        if row > 0 {
+            let up = data[row - 1][column]
+            if up == .NS || up == .SE || up == .SW {
+                ways.append(.N)
+            }
+        }
+
+        if row < data.count - 1 {
+            let down = data[row + 1][column]
+            if down == .NS || down == .NE || down == .NW {
+                ways.append(.S)
+            }
+        }
+
+        if column > 0 {
+            let left = data[row][column - 1]
+            if left == .EW || left == .NE || left == .SE {
+                ways.append(.W)
+            }
+        }
+
+        if column < data[0].count - 1 {
+            let right = data[row][column + 1]
+            if right == .EW || right == .NW || right == .SW {
+                ways.append(.E)
+            }
+        }
+
+        guard ways.count == 2 else {
+            return .NW
+        }
+
+        switch (ways[0], ways[1]) {
+        case (.N, _):
+            switch (ways[0], ways[1]) {
+            case (_, .E): return .NE
+            case (_, .W): return .NW
+            case (_, .S): return .NS
+            default: break
+            }
+        case (.S, _):
+            switch (ways[0], ways[1]) {
+            case (_, .N): return .NS
+            case (_, .E): return .SE
+            case (_, .W): return .SW
+            default: break
+            }
+        case (.E, _):
+            switch (ways[0], ways[1]) {
+            case (_, .N): return .NE
+            case (_, .S): return .SE
+            case (_, .W): return .EW
+            default: break
+            }
+        case (.W, _):
+            switch (ways[0], ways[1]) {
+            case (_, .N): return .NW
+            case (_, .S): return .SW
+            case (_, .E): return .EW
+            default: break
+            }
+        }
+
+        return .NW
     }
 }
 
