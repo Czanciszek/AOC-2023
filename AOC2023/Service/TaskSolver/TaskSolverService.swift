@@ -24,7 +24,7 @@ final class TaskSolverService: TaskSolverServiceProtocol {
         case "8": Task8(data: data)
         case "9": Task9(data: data)
         case "10": Task10(data: data)
-        case "11": throw TaskError.notSolvedYet
+        case "11": Task11(data: data)
         default: throw TaskError.unknownTask
         }
 

@@ -58,7 +58,7 @@ struct MainView: View {
             }
         }
         .padding(8)
-        .frame(maxHeight: 200)
+        .frame(maxHeight: 280)
         .background(FCColor.foreground.color(opacity: 0.5))
         .cornerRadius(8)
     }
