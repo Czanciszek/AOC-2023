@@ -58,6 +58,8 @@
 		37A4EE032B4AB373002DF506 /* MockedTaskLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A4EE022B4AB373002DF506 /* MockedTaskLoaderService.swift */; };
 		37A4EE052B4AB37D002DF506 /* MockedTaskSolverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A4EE042B4AB37D002DF506 /* MockedTaskSolverService.swift */; };
 		37A4EE072B4ABE19002DF506 /* TaskLoaderServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A4EE062B4ABE19002DF506 /* TaskLoaderServiceTests.swift */; };
+		37AE58152CFE403F0027CD6E /* Task1Y2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AE58142CFE403F0027CD6E /* Task1Y2024.swift */; };
+		37AE58172CFE405C0027CD6E /* Task2Y2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AE58162CFE405C0027CD6E /* Task2Y2024.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +134,8 @@
 		37A4EE022B4AB373002DF506 /* MockedTaskLoaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedTaskLoaderService.swift; sourceTree = "<group>"; };
 		37A4EE042B4AB37D002DF506 /* MockedTaskSolverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedTaskSolverService.swift; sourceTree = "<group>"; };
 		37A4EE062B4ABE19002DF506 /* TaskLoaderServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLoaderServiceTests.swift; sourceTree = "<group>"; };
+		37AE58142CFE403F0027CD6E /* Task1Y2024.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task1Y2024.swift; sourceTree = "<group>"; };
+		37AE58162CFE405C0027CD6E /* Task2Y2024.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task2Y2024.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,18 +259,9 @@
 		3716EC872B48A4A5008CFC12 /* Task */ = {
 			isa = PBXGroup;
 			children = (
+				37AE58112CFE40210027CD6E /* 2024 */,
+				37AE58102CFE40130027CD6E /* 2023 */,
 				3716EC9E2B48A761008CFC12 /* TaskProvider.swift */,
-				3716EC8E2B48A4EB008CFC12 /* Task1.swift */,
-				3716EC922B48A4EB008CFC12 /* Task2.swift */,
-				3716EC932B48A4EB008CFC12 /* Task3.swift */,
-				3716EC8A2B48A4EB008CFC12 /* Task4.swift */,
-				3716EC8F2B48A4EB008CFC12 /* Task5.swift */,
-				3716EC902B48A4EB008CFC12 /* Task6.swift */,
-				3716EC912B48A4EB008CFC12 /* Task7.swift */,
-				3716EC8B2B48A4EB008CFC12 /* Task8.swift */,
-				3716EC8C2B48A4EB008CFC12 /* Task9.swift */,
-				3716EC8D2B48A4EB008CFC12 /* Task10.swift */,
-				3751137F2B4C7F320003A48C /* Task11.swift */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -353,6 +348,33 @@
 				37A4EE042B4AB37D002DF506 /* MockedTaskSolverService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		37AE58102CFE40130027CD6E /* 2023 */ = {
+			isa = PBXGroup;
+			children = (
+				3716EC8E2B48A4EB008CFC12 /* Task1.swift */,
+				3716EC922B48A4EB008CFC12 /* Task2.swift */,
+				3716EC932B48A4EB008CFC12 /* Task3.swift */,
+				3716EC8A2B48A4EB008CFC12 /* Task4.swift */,
+				3716EC8F2B48A4EB008CFC12 /* Task5.swift */,
+				3716EC902B48A4EB008CFC12 /* Task6.swift */,
+				3716EC912B48A4EB008CFC12 /* Task7.swift */,
+				3716EC8B2B48A4EB008CFC12 /* Task8.swift */,
+				3716EC8C2B48A4EB008CFC12 /* Task9.swift */,
+				3716EC8D2B48A4EB008CFC12 /* Task10.swift */,
+				3751137F2B4C7F320003A48C /* Task11.swift */,
+			);
+			path = 2023;
+			sourceTree = "<group>";
+		};
+		37AE58112CFE40210027CD6E /* 2024 */ = {
+			isa = PBXGroup;
+			children = (
+				37AE58142CFE403F0027CD6E /* Task1Y2024.swift */,
+				37AE58162CFE405C0027CD6E /* Task2Y2024.swift */,
+			);
+			path = 2024;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -513,6 +535,8 @@
 				3716EC962B48A4EC008CFC12 /* Task9.swift in Sources */,
 				3716EC9F2B48A761008CFC12 /* TaskProvider.swift in Sources */,
 				3716ECC42B499461008CFC12 /* View+ErrorAlert.swift in Sources */,
+				37AE58172CFE405C0027CD6E /* Task2Y2024.swift in Sources */,
+				37AE58152CFE403F0027CD6E /* Task1Y2024.swift in Sources */,
 				37A4EDF42B49EE05002DF506 /* TaskError.swift in Sources */,
 				3716EC7A2B489A84008CFC12 /* APIService.swift in Sources */,
 				3716EC982B48A4EC008CFC12 /* Task1.swift in Sources */,

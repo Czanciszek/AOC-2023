@@ -8,14 +8,14 @@
 import AVFoundation
 
 protocol APIServiceProtocol {
-    func get(taskNumber: String) async throws -> Data
+    func get(taskNumber: String, year: String) async throws -> Data
 }
 
 final class APIService: APIServiceProtocol {
     private let cookie = ""
 
-    func get(taskNumber: String) async throws -> Data {
-        let url = URL(string: "https://adventofcode.com/2023/day/\(taskNumber)/input")!
+    func get(taskNumber: String, year: String) async throws -> Data {
+        let url = URL(string: "https://adventofcode.com/\(year)/day/\(taskNumber)/input")!
 
         if cookie.isEmpty {
             throw APIError.missingCookie

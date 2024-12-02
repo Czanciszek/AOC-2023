@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TaskLoaderServiceProtocol {
-    func getData(taskNumber: String, viaNetwork useNetworking: Bool) async throws -> [String]
+    func getData(taskNumber: String, year: String, viaNetwork useNetworking: Bool) async throws -> [String]
 }
 
 final class TaskLoaderService: TaskLoaderServiceProtocol {
@@ -22,9 +22,9 @@ final class TaskLoaderService: TaskLoaderServiceProtocol {
         self.fileService = fileService
     }
 
-    func getData(taskNumber: String, viaNetwork useNetworking: Bool) async throws -> [String] {
+    func getData(taskNumber: String, year: String, viaNetwork useNetworking: Bool) async throws -> [String] {
         let data: Data = if useNetworking {
-            try await apiService.get(taskNumber: taskNumber)
+            try await apiService.get(taskNumber: taskNumber, year: year)
         } else {
             try fileService.loadFile(fileName: taskNumber)
         }

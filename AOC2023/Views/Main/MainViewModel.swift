@@ -25,7 +25,7 @@ final class MainViewModel: ObservableObject {
         self.taskSolverService = taskSolverService
     }
 
-    func selectedTask(taskNumber: String) async {
+    func selectedTask(taskNumber: String, year: String) async {
         await MainActor.run {
             reset()
             inProgress = true
@@ -34,10 +34,14 @@ final class MainViewModel: ObservableObject {
         do {
             let data = try await taskLoaderService.getData(
                 taskNumber: taskNumber,
+                year: year,
                 viaNetwork: networkToggle
             )
 
-            try await solveTask(taskNumber: taskNumber, using: data)
+            try await solveTask(
+                taskNumber: taskNumber,
+                year: year,
+                using: data)
         } catch {
             await MainActor.run {
                 self.error = error
@@ -46,8 +50,8 @@ final class MainViewModel: ObservableObject {
         }
     }
 
-    func solveTask(taskNumber: String, using data: [String]) async throws {
-        let result = try taskSolverService.solve(taskNumber: taskNumber, data: data)
+    func solveTask(taskNumber: String, year: String, using data: [String]) async throws {
+        let result = try taskSolverService.solve(taskNumber: taskNumber, year: year, data: data)
         await MainActor.run {
             currentTaskResult = result
             inProgress = false

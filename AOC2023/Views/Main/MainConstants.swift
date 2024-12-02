@@ -14,7 +14,7 @@ enum MainConstants {
     }
 
     enum Text {
-        static let title = "Advent of Code 2023 Solver"
+        static let title = "Advent of Code %@ Solver"
 
         static let useNetworkConnection = "Use Network Connection"
         static let loadDataFromFile = "Load data from file"

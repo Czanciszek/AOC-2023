@@ -11,10 +11,16 @@ private typealias Constants = MainConstants
 
 struct MainView: View {
     @ObservedObject var viewModel: MainViewModel
+    @State private var selectedYear: String = "2024"
 
     var body: some View {
         ScrollView {
             title
+            Picker("", selection: $selectedYear) {
+                Text("2023").tag("2023")
+                Text("2024").tag("2024")
+            }
+            .pickerStyle(.segmented)
             taskList
             fetchToggle
             if let result = viewModel.currentTaskResult {
@@ -31,7 +37,7 @@ struct MainView: View {
     }
 
     private var title: some View {
-        Text(Constants.Text.title)
+        Text(String(format: Constants.Text.title, selectedYear))
             .multilineTextAlignment(.center)
             .font(.largeTitle)
             .fontWeight(.bold)
@@ -51,7 +57,7 @@ struct MainView: View {
                 ForEach(Constants.Data.taskNumbers, id: \.self) { number in
                     TaskButtonView(taskNumber: number) {
                         Task {
-                            await viewModel.selectedTask(taskNumber: number)
+                            await viewModel.selectedTask(taskNumber: number, year: selectedYear)
                         }
                     }
                 }
