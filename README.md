@@ -1,4 +1,4 @@
-# AOC-2023
+# AOC-Solver-Project
 
 Provides a simple app for solving Advent of Code tasks. (visit https://adventofcode.com/)
 
