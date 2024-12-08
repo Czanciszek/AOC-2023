@@ -14,8 +14,8 @@ protocol TaskSolverServiceProtocol {
 final class TaskSolverService: TaskSolverServiceProtocol {
     func solve(taskNumber: String, year: String, data: [String]) throws -> TasksResult {
         let task: TaskProvider = switch year {
-        case "2023":
-            try provide2023Task(for: taskNumber, data: data)
+        case "2024":
+            try provide2024Task(for: taskNumber, data: data)
         default:
             try provide2023Task(for: taskNumber, data: data)
         }
@@ -55,6 +55,9 @@ final class TaskSolverService: TaskSolverServiceProtocol {
         switch taskNumber {
         case "1": Task1Y2024(data: data)
         case "2": Task2Y2024(data: data)
+        case "4": Task4Y2024(data: data)
+        case "5": Task5Y2024(data: data)
+        case "6": Task6Y2024(data: data)
         default: throw TaskError.unknownTask
         }
     }
